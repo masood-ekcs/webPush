@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hello</h1>
+    <script>
+        // Ye function appko internet se mil jaayega, this function is encoding a string to Uint8Array
+        function urlBase64ToUint8Array(base64String) {
+            const padding = "=".repeat((4 - base64String.length % 4) % 4);
+            const base64 = (base64String + padding)
+                .replace(/\-/g, "+")
+                .replace(/_/g, "/");
+            const rawData = window.atob(base64);
+            const outputArray = new Uint8Array(rawData.length);
+            for (let i = 0; i < rawData.length; ++i) {
+                outputArray[i] = rawData.charCodeAt(i);
+            }
+            return outputArray;
+        }
+
+
+
+        if ('serviceWorker' in navigator) { // navigator variable comes from the browser
+            send().catch((err) => { console.log(err) })
+        }
+
+
+
+        async function send() {
+            // Ye hai worker.js file ko register krega,background mein run hone ke lie
+            const register = await navigator.serviceWorker.register('/worker.js', { scope: '/' })
+
+            // this will give user the option (Yes/No) to subscribe
+            const subscription = await register.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlBase64ToUint8Array('BJfT0VtK77zmrMP1BXVs2Zi1-NjwkjUZoEzzCvSGJYR1P2AhyKml-KypPZO_WZzoqed-281a93dSR2VUsPkV4oA')
+            })
+            console.log(subscription)
+
+            let res = await fetch("/data", { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(subscription) })
+            let f_res = await res.json()
+            // alert(f_res.message)
+
+
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+Subscriber - Publisher Model - Is model mein sabse pehle client ek request bhejta hai server ko (normal http request type), server badle mein client ko ek response deta hai, client response milne ke baad apne consent se subscribe krta hai, aur ek baar subscribe ho gya toh server ko subscription mil jaata hai (is case mein subscription ek javascript object hoga), server us subscription ko save krwa sakta hai database mein, ya temporarily ek varible mein save kr sakta hai. Phir usi subscription object ke help se us particular client ko message publish kr sakta hai kabhi bhi, kitni bhi baar.
+
+Service Worker in Web Browser - Service worker javascript ki waisey files hoti hai, to pehle ek baar register hoti hai, aur background mein hmesha chalti rhti hai. even agar aap wo website ko close bhi krdoge bhi toh. 
+
+
+To generate vapid keys - Run this command - ./node_modules/.bin/web-push generate-vapid-keysß
