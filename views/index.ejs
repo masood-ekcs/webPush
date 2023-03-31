@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Hello</h1>
+    <h1>Hello, WebPush</h1>
     <script>
         // Ye function appko internet se mil jaayega, this function is encoding a string to Uint8Array
         function urlBase64ToUint8Array(base64String) {
@@ -31,8 +31,6 @@
             send().catch((err) => { console.log(err) })
         }
 
-
-
         async function send() {
             // Ye hai worker.js file ko register krega,background mein run hone ke lie
             const register = await navigator.serviceWorker.register('/worker.js', { scope: '/' })
@@ -47,13 +45,7 @@
             let res = await fetch("/data", { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(subscription) })
             let f_res = await res.json()
             // alert(f_res.message)
-
-
         }
-
-
-
-
 
     </script>
 </body>
