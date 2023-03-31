@@ -32,8 +32,6 @@
             send().catch((err) => { console.log(err) })
         }
 
-
-
         async function send() {
             // Ye hai worker.js file ko register krega,background mein run hone ke lie
             const register = await navigator.serviceWorker.register('/worker.js', { scope: '/' })
@@ -47,14 +45,14 @@
 
             let res = await fetch("/data", { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(subscription) })
             let f_res = await res.json()
+<<<<<<< HEAD
             alert(f_res.message)
 
 
+=======
+            // alert(f_res.message)
+>>>>>>> 89aba775d3d25ec581d628c01a6839c3b4a03b10
         }
-
-
-
-
 
     </script>
 </body>
