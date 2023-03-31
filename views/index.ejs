@@ -10,6 +10,7 @@
 
 <body>
     <h1>Hello</h1>
+    <a href="/sendNotification" style="border: 1px solid #cccccc; padding: 10px; color: #000000; font-size: 30px;"> Sent Notification</a>
     <script>
         // Ye function appko internet se mil jaayega, this function is encoding a string to Uint8Array
         function urlBase64ToUint8Array(base64String) {
@@ -46,7 +47,7 @@
 
             let res = await fetch("/data", { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(subscription) })
             let f_res = await res.json()
-            // alert(f_res.message)
+            alert(f_res.message)
 
 
         }

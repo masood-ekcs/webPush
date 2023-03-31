@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const webPush = require('web-push')
+const uuid = require('uuid')
 const app = express()
 const mongoose = require('mongoose')
 const user = require('./models/user.js')
@@ -20,11 +21,11 @@ app.post("/data", async (req, res) => {
 
     // res.json({ message: 'Successfully registered' })
     let subscription = req.body
-    
-    let user1 = new user({email: "test@gmail.com", name: "Ayush", subscription})
+    let email = uuid.v4()
+    let user1 = new user({email: email, name: "Ayush", subscription})
     let test = await user1.save()
     console.log(test)
-    res.send("Okay")
+    res.send("Okay")                        
 
     
 
